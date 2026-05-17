@@ -2,8 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const LOGO_URL =
-  'https://lh3.googleusercontent.com/aida/ADBb0uj0YNLs6Rh90DCwzLYfP5kEgHAKQRQ7E20PNfMKZIMC8jpM7ExHPDKgWIWgGtb4wkhSlHUG8BDS6JayUFOr80kcqeL8ryrk4Wh1uNtR3GjklFwHWRIyxZyUztM5CqFP_cbdII0K6k6-e5soZ5t3ZSXFxHadLgp42UdBRQ8TtlNXIB-BgulgJo8NZBXbimmV88mHjAa4fUAixPnFz8Pni0kGBoyz4UU-JII72VHSncs2w9B0vJEf76SYygldb3htNMYAEqq78rc5';
+const LOGO_URL = 'https://lh3.googleusercontent.com/d/1s57rFz83FaBtUbOe66VgdhWFCyqE5nPJ';
 
 interface FooterProps {
   locale: string;
