@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductsClient from '@/components/ProductsClient';
@@ -13,7 +13,7 @@ export default async function ProductsPage({
   params: { locale: string };
   searchParams: { category?: string };
 }) {
-  const t = useTranslations('products');
+  const t = await getTranslations({ locale, namespace: 'products' });
   const products = await getProducts();
   const initialCategory = searchParams.category || '';
 

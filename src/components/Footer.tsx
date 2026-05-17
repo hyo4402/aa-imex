@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,9 +9,9 @@ interface FooterProps {
   locale: string;
 }
 
-export default function Footer({ locale }: FooterProps) {
-  const t = useTranslations('footer');
-  const tNav = useTranslations('nav');
+export default async function Footer({ locale }: FooterProps) {
+  const t = await getTranslations({ locale, namespace: 'footer' });
+  const tNav = await getTranslations({ locale, namespace: 'nav' });
 
   const productCats = [
     { label: t('cat1'), href: `/${locale}/products?category=frozen` },

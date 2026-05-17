@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
@@ -49,8 +49,8 @@ const STRENGTHS = [
 
 const STEPS = ['step1', 'step2', 'step3', 'step4', 'step5', 'step6'] as const;
 
-export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
-  const t = useTranslations('home');
+export default async function HomePage({ params: { locale } }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale, namespace: 'home' });
 
   return (
     <>

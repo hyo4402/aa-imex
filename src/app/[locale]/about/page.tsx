@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -12,8 +12,8 @@ const STORY_IMG2 =
 const QUALITY_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCYaQdZyNrnJDEZZdtK-DJ35nn43rccllcsGrKbIQOWSSm8027z_VaX-CfyHKvXCpWnS7jnXZm8GBJo5iGwShPFqx12MLdLMSULTebFpT91z8pn6CtR7OoM67BKgPpPHuTIZuAda6yA2glklqTBfK_QJHJNsQHsBAzQ1v6HjVc9xubTMwzSxDMRoayWyGuu3LipiM4TScOQsr4hHk6H78wfeBxK4UTK90muXENbyplyU3uOcEXgGMa6ID2NJvSLqO1nbTDSMRiypHE';
 
-export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
-  const t = useTranslations('about');
+export default async function AboutPage({ params: { locale } }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale, namespace: 'about' });
 
   return (
     <>

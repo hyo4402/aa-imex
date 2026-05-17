@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -25,7 +25,7 @@ export default async function ProductDetailPage({
 }: {
   params: { locale: string; slug: string };
 }) {
-  const t = useTranslations('productDetail');
+  const t = await getTranslations({ locale, namespace: 'productDetail' });
   const product = await getProduct(slug);
 
   if (!product) notFound();

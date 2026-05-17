@@ -1,16 +1,16 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
 
-export default function ContactPage({
+export default async function ContactPage({
   params: { locale },
   searchParams,
 }: {
   params: { locale: string };
   searchParams: { product?: string };
 }) {
-  const t = useTranslations('contact');
+  const t = await getTranslations({ locale, namespace: 'contact' });
 
   return (
     <>
