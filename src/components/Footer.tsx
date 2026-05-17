@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const LOGO_URL = 'https://lh3.googleusercontent.com/d/1s57rFz83FaBtUbOe66VgdhWFCyqE5nPJ';
+const LOGO_URL = 'https://lh3.googleusercontent.com/d/13uvMyAzz4K5nkm9TxHCBU0IeQnSRutWw';
 
 interface FooterProps {
   locale: string;
