@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
@@ -10,6 +10,7 @@ export default async function ContactPage({
   params: { locale: string };
   searchParams: { product?: string };
 }) {
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'contact' });
 
   return (

@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -9,15 +9,7 @@ import { getProduct, getProducts } from '@/lib/sheets';
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  try {
-    const products = await getProducts();
-    const locales = ['en', 'vn'];
-    return locales.flatMap((locale) =>
-      products.map((p) => ({ locale, slug: p.slug }))
-    );
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 export default async function ProductDetailPage({
@@ -25,6 +17,7 @@ export default async function ProductDetailPage({
 }: {
   params: { locale: string; slug: string };
 }) {
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'productDetail' });
   const product = await getProduct(slug);
 

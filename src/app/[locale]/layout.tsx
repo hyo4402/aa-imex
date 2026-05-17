@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import '../globals.css';
 
 export const metadata: Metadata = {
@@ -9,6 +10,10 @@ export const metadata: Metadata = {
     'B2B premium food import/export. Frozen foods, agricultural products, seafood, and processed ingredients with global supply chain solutions.',
 };
 
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'vn' }];
+}
+
 export default async function LocaleLayout({
   children,
   params: { locale },
@@ -16,6 +21,7 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (
