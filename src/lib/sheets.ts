@@ -30,6 +30,12 @@ export type Product = {
   specs: { label: string; value: string }[];
 };
 
+function toDirectImageUrl(url: string): string {
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (match) return `https://lh3.googleusercontent.com/d/${match[1]}`;
+  return url;
+}
+
 function rowToProduct(row: string[]): Product {
   const specs: { label: string; value: string }[] = [];
   for (let i = 0; i < 5; i++) {
@@ -47,7 +53,7 @@ function rowToProduct(row: string[]): Product {
     desc_short_vn: (row[6] || '').trim(),
     desc_long_en: (row[7] || '').trim(),
     desc_long_vn: (row[8] || '').trim(),
-    image_url: (row[9] || '').trim(),
+    image_url: toDirectImageUrl((row[9] || '').trim()),
     origin: (row[10] || '').trim(),
     sku: (row[11] || '').trim(),
     packaging: (row[12] || '').trim(),
